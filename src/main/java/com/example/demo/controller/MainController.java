@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MainController {
+    //测试
     @RequestMapping(value = "/sd")
     public String main(){
         return "你进来了!";
