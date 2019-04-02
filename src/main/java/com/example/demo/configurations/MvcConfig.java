@@ -3,6 +3,7 @@ package com.example.demo.configurations;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
@@ -17,5 +18,10 @@ public class MvcConfig extends WebMvcConfigurationSupport{
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/META-INF/resources/","classpath:/META-INF/resources/webjars/","classpath:/static/","classpath:/templates/");
+    }
+
+    @Override
+    protected void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("pages/login");
     }
 }

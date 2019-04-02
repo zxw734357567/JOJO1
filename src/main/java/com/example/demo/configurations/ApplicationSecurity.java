@@ -27,7 +27,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
       //  web.ignoring().antMatchers("/templates/**");
-        web.ignoring().antMatchers("/**/*.css", "/swagger-ui/**","/v2/api-docs", "/webjars/**","/swagger-resources/**");
+        web.ignoring().antMatchers("/**/*.css", "/swagger-ui/**","/**/*.js","/v2/api-docs", "/webjars/**","/swagger-resources/**");
     }
 
     //note : authorize:认证
@@ -38,7 +38,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login","/swagger-ui.html").permitAll()//制定该路径可以访问,其他不可以访问
                 .anyRequest().fullyAuthenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/login").loginProcessingUrl("/user/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .and()
