@@ -21,18 +21,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true) //开启security注解
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    @Override
-    protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
-    }
+
 
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/", "/resources/**", "/static/**", "/public/**", "/webui/**", "/h2-console/**"
-                , "/configuration/**", "/swagger-ui/**", "/swagger-resources/**", "/api-docs", "/api-docs/**", "/v2/api-docs/**"
-                , "/*.html", "/**/*.html" ,"/**/*.css","/**/*.js","/**/*.png","/**/*.jpg", "/**/*.gif", "/**/*.svg", "/**/*.ico", "/**/*.ttf","/**/*.woff","/**/*.otf","/**/*.json","/**/*.js","/**/*.less","/**/*.css");
+      //  web.ignoring().antMatchers("/templates/**");
+        web.ignoring().antMatchers("/**/*.css", "/swagger-ui/**","/v2/api-docs", "/webjars/**","/swagger-resources/**");
     }
 
     //note : authorize:认证
@@ -40,10 +35,10 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
         http.authorizeRequests()
-                .antMatchers("/login").permitAll()//制定该路径可以访问,其他不可以访问
+                .antMatchers("/login","/swagger-ui.html").permitAll()//制定该路径可以访问,其他不可以访问
                 .anyRequest().fullyAuthenticated()
                 .and()
-                .formLogin().loginPage("/login")
+                .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .and()
