@@ -5,7 +5,7 @@ $("#login-button").click(function(){
   debugger
   $.ajax({
     type:"post",
-    url:"/user/login",
+    url:window.location.origin+"/user/login",
     dataType:"json",
     data:{
       'userName':$("#userName").val(),
@@ -19,3 +19,4 @@ $("#login-button").click(function(){
     }
   });
 });
+
