@@ -43,7 +43,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
                 .antMatchers("/login","/swagger-ui.html").permitAll()//制定该路径可以访问,其他不可以访问
                 .anyRequest().fullyAuthenticated()
                 .and()
