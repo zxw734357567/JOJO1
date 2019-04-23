@@ -1,22 +1,24 @@
 /**
  * Created by Administrator on 2019/4/2.
  */
-$("#login-button").click(function(){
-  debugger
-  $.ajax({
-    type:"post",
-    url:window.location.origin+"/user/login",
-    dataType:"json",
-    data:{
-      'userName':$("#userName").val(),
-      'password':$("#password").val(),
-    },
-    success:function(data){
-     // $("#data").html(data.name + '的任务是' + data.task);
-    },
-    error:function(jqXHR){
-     // $("#data").html("发生错误:"+jqXHR.status);
-    }
-  });
-});
+$(document).ready(function() {
+  $("#login-button").click(function () {
+    debugger
+    $.ajax({
+      type: "POST",
+      url: window.location.origin + "/user/login",
+     //contentType: 'application/json;charset=utf-8',
+      dataType: "JSON",
+      data: {
+        "username": $("#userName").val(),
+       "password": $("#password").val(),
+      },
+      success: function (data) {
+        // $("#data").html(data.name + '的任务是' + data.task);
+      },
+
+    });
+  })
+
+})
 
