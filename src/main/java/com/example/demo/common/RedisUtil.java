@@ -1,4 +1,4 @@
-package com.example.demo.RedisRepository;
+package com.example.demo.common;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.CollectionUtils;
