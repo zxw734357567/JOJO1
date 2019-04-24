@@ -31,8 +31,12 @@ public class HiSysRoEntity {
     private Time dtModify;
     private String zj;
 
+    public HiSysRoEntity() {
+    }
+
     @Id
     @Column(name = "ID_RO")
+    @GeneratedValue
     public String getIdRo() {
         return idRo;
     }
@@ -41,7 +45,7 @@ public class HiSysRoEntity {
         this.idRo = idRo;
     }
 
-    @Basic
+    
     @Column(name = "ID_TET")
     public String getIdTet() {
         return idTet;
@@ -51,7 +55,7 @@ public class HiSysRoEntity {
         this.idTet = idTet;
     }
 
-    @Basic
+    
     @Column(name = "SD_RELATION")
     public String getSdRelation() {
         return sdRelation;
@@ -61,7 +65,7 @@ public class HiSysRoEntity {
         this.sdRelation = sdRelation;
     }
 
-    @Basic
+    
     @Column(name = "SD_ROTP")
     public String getSdRotp() {
         return sdRotp;
@@ -71,7 +75,7 @@ public class HiSysRoEntity {
         this.sdRotp = sdRotp;
     }
 
-    @Basic
+    
     @Column(name = "SD_ROLEVEL")
     public String getSdRolevel() {
         return sdRolevel;
@@ -81,7 +85,7 @@ public class HiSysRoEntity {
         this.sdRolevel = sdRolevel;
     }
 
-    @Basic
+    
     @Column(name = "ID_ROCA")
     public String getIdRoca() {
         return idRoca;
@@ -91,7 +95,7 @@ public class HiSysRoEntity {
         this.idRoca = idRoca;
     }
 
-    @Basic
+    
     @Column(name = "SD_LOGINTP")
     public String getSdLogintp() {
         return sdLogintp;
@@ -101,7 +105,7 @@ public class HiSysRoEntity {
         this.sdLogintp = sdLogintp;
     }
 
-    @Basic
+    
     @Column(name = "CD")
     public String getCd() {
         return cd;
@@ -111,7 +115,7 @@ public class HiSysRoEntity {
         this.cd = cd;
     }
 
-    @Basic
+    
     @Column(name = "NA")
     public String getNa() {
         return na;
@@ -121,7 +125,7 @@ public class HiSysRoEntity {
         this.na = na;
     }
 
-    @Basic
+    
     @Column(name = "ICON")
     public String getIcon() {
         return icon;
@@ -131,7 +135,7 @@ public class HiSysRoEntity {
         this.icon = icon;
     }
 
-    @Basic
+    
     @Column(name = "PY")
     public String getPy() {
         return py;
@@ -141,7 +145,7 @@ public class HiSysRoEntity {
         this.py = py;
     }
 
-    @Basic
+    
     @Column(name = "WB")
     public String getWb() {
         return wb;
@@ -151,7 +155,7 @@ public class HiSysRoEntity {
         this.wb = wb;
     }
 
-    @Basic
+    
     @Column(name = "DES")
     public String getDes() {
         return des;
@@ -161,7 +165,7 @@ public class HiSysRoEntity {
         this.des = des;
     }
 
-    @Basic
+    
     @Column(name = "INSTR")
     public String getInstr() {
         return instr;
@@ -171,7 +175,7 @@ public class HiSysRoEntity {
         this.instr = instr;
     }
 
-    @Basic
+    
     @Column(name = "FG_ACTIVE")
     public String getFgActive() {
         return fgActive;
@@ -181,7 +185,7 @@ public class HiSysRoEntity {
         this.fgActive = fgActive;
     }
 
-    @Basic
+    
     @Column(name = "DT_CREATE")
     public Time getDtCreate() {
         return dtCreate;
@@ -191,7 +195,7 @@ public class HiSysRoEntity {
         this.dtCreate = dtCreate;
     }
 
-    @Basic
+    
     @Column(name = "DT_MODIFY")
     public Time getDtModify() {
         return dtModify;
@@ -201,7 +205,7 @@ public class HiSysRoEntity {
         this.dtModify = dtModify;
     }
 
-    @Basic
+    
     @Column(name = "ZJ")
     public String getZj() {
         return zj;
