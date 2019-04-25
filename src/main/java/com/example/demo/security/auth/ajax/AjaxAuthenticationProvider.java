@@ -1,5 +1,8 @@
 package com.example.demo.security.auth.ajax;
 
+import com.example.demo.Dto.RolesAndPermissionInUser;
+import com.example.demo.entity.JojoRoleUser;
+import com.example.demo.entity.JojoUser;
 import com.example.demo.entity.User;
 import com.example.demo.service.impl.DatabaseUserService;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -22,13 +25,14 @@ import java.util.stream.Collectors;
 public class AjaxAuthenticationProvider implements AuthenticationProvider {
 
     private final BCryptPasswordEncoder encoder;
+    private final DatabaseUserService userService;
 
-    public AjaxAuthenticationProvider( DatabaseUserService userService,BCryptPasswordEncoder encoder){
+    public AjaxAuthenticationProvider(final  DatabaseUserService userService,final  BCryptPasswordEncoder encoder){
         this.encoder = encoder;
         this.userService = userService;
     }
 
-    private final DatabaseUserService userService;
+
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -37,16 +41,18 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
         String username = (String) authentication.getPrincipal();
         String password = (String) authentication.getCredentials();
 
-        User user = userService.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+        JojoUser user = userService.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
         if (!encoder.matches(password, user.getPassword())) {
             throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
         }
+        List<RolesAndPermissionInUser> rolesAndPermissionByUsernameByID = userService.findRolesAndPermissionByUsernameByID(user.getId());
 
-        if (user.getRoles() == null) throw new InsufficientAuthenticationException("User has no roles assigned");
+       /* if(rolesAndPermissionByUsernameByID.stream().filter((item->item.getJojoRoleId()!=null)))
+        if (rolesAndPermissionByUsernameByID == null) throw new InsufficientAuthenticationException("User has no roles assigned");
 
-      /*  List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getRole().authority()))
+        List<GrantedAuthority> authorities = userRoles.stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.getSysRoleId().authority()))
                 .collect(Collectors.toList());*/
 
         return null;
