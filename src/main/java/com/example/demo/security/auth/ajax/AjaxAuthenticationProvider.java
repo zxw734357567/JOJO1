@@ -5,10 +5,12 @@ import com.example.demo.entity.JojoPermission;
 import com.example.demo.entity.JojoRoleUser;
 import com.example.demo.entity.JojoUser;
 import com.example.demo.entity.User;
+import com.example.demo.security.auth.model.UserContext;
 import com.example.demo.service.impl.DatabaseUserService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
@@ -48,17 +50,18 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
         }
         List<JojoRoleUser> bySysUserId = userService.findBySysUserId(user.getId());
 
-        if (bySysUserId == null) throw new InsufficientAuthenticationException("User has no roles assigned");
+        if (bySysUserId == null) {throw new InsufficientAuthenticationException("User has no roles assigned");}
 
         List<JojoPermission> permissionsByRoleId = userService.findPermissionsByRoleId(bySysUserId);
         List<GrantedAuthority> authorities = permissionsByRoleId.stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getUrl()))
                 .collect(Collectors.toList());
-        return null;
+        UserContext userContext = UserContext.create(user.getUsername(), authorities);
+        return new UsernamePasswordAuthenticationToken(userContext, null, userContext.getAuthorities());
     }
 
     @Override
-    public boolean supports(Class<?> aClass) {
-        return false;
+    public boolean supports(Class<?> authentication) {
+        return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
     }
 }
