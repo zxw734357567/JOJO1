@@ -2,7 +2,8 @@ package com.example.demo.security.auth.ajax;
 
 import com.example.demo.common.ErrorCode;
 import com.example.demo.common.ErrorResponse;
-import com.example.demo.security.auth.exceptions.AuthMethodNotSupportedException;
+import com.example.demo.security.exceptions.AuthMethodNotSupportedException;
+import com.example.demo.security.exceptions.JwtExpiredTokenException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,6 @@ public class AjaxAwareAuthenticationFailureHandler implements AuthenticationFail
 
         mapper.writeValue(response.getWriter(), ErrorResponse.of("Authentication failed", ErrorCode.AUTHENTICATION, HttpStatus.UNAUTHORIZED));
     }
-}
+
 
 }

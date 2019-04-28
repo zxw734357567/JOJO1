@@ -1,4 +1,4 @@
-package com.example.demo.security.auth.exceptions;
+package com.example.demo.security.exceptions;
 
 import org.springframework.security.authentication.AuthenticationServiceException;
 

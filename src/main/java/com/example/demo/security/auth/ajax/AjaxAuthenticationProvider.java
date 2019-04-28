@@ -1,11 +1,10 @@
 package com.example.demo.security.auth.ajax;
 
-import com.example.demo.Dto.RolesAndPermissionInUser;
 import com.example.demo.entity.JojoPermission;
 import com.example.demo.entity.JojoRoleUser;
 import com.example.demo.entity.JojoUser;
-import com.example.demo.entity.User;
-import com.example.demo.security.auth.model.UserContext;
+
+import com.example.demo.security.model.UserContext;
 import com.example.demo.service.impl.DatabaseUserService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

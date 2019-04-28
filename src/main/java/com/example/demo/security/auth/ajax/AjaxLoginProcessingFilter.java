@@ -1,7 +1,7 @@
 package com.example.demo.security.auth.ajax;
 
 import com.example.demo.common.WebUtil;
-import com.example.demo.security.auth.exceptions.AuthMethodNotSupportedException;
+import com.example.demo.security.exceptions.AuthMethodNotSupportedException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
