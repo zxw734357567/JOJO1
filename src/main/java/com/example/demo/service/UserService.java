@@ -16,7 +16,7 @@ public interface UserService {
      Optional<JojoUser> findByUsername(String username);
     List<RolesAndPermissionInUser> findRolesAndPermissionByUsernameByID(Long id);
     List<JojoRoleUser> findBySysUserId(Long sysUserId);
-    List<JojoPermission> findPermissionsByRoleId(Long roleId);
+    List<JojoPermission> findPermissionsByRoleId( List<JojoRoleUser> jojoRoleUsers);
 
   /*  List<RolesAndPermissionInUser> findUserOfRoleAndPermissionByUserName(String username);*/
 }

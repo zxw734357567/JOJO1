@@ -1,6 +1,7 @@
 package com.example.demo.security.auth.ajax;
 
 import com.example.demo.Dto.RolesAndPermissionInUser;
+import com.example.demo.entity.JojoPermission;
 import com.example.demo.entity.JojoRoleUser;
 import com.example.demo.entity.JojoUser;
 import com.example.demo.entity.User;
@@ -27,11 +28,10 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
     private final BCryptPasswordEncoder encoder;
     private final DatabaseUserService userService;
 
-    public AjaxAuthenticationProvider(final  DatabaseUserService userService,final  BCryptPasswordEncoder encoder){
+    public AjaxAuthenticationProvider(final DatabaseUserService userService, final BCryptPasswordEncoder encoder) {
         this.encoder = encoder;
         this.userService = userService;
     }
-
 
 
     @Override
@@ -46,15 +46,14 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
         if (!encoder.matches(password, user.getPassword())) {
             throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
         }
-        List<RolesAndPermissionInUser> rolesAndPermissionByUsernameByID = userService.findRolesAndPermissionByUsernameByID(user.getId());
+        List<JojoRoleUser> bySysUserId = userService.findBySysUserId(user.getId());
 
-       /* if(rolesAndPermissionByUsernameByID.stream().filter((item->item.getJojoRoleId()!=null)))
-        if (rolesAndPermissionByUsernameByID == null) throw new InsufficientAuthenticationException("User has no roles assigned");
+        if (bySysUserId == null) throw new InsufficientAuthenticationException("User has no roles assigned");
 
-        List<GrantedAuthority> authorities = userRoles.stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getSysRoleId().authority()))
-                .collect(Collectors.toList());*/
-
+        List<JojoPermission> permissionsByRoleId = userService.findPermissionsByRoleId(bySysUserId);
+        List<GrantedAuthority> authorities = permissionsByRoleId.stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.getUrl()))
+                .collect(Collectors.toList());
         return null;
     }
 

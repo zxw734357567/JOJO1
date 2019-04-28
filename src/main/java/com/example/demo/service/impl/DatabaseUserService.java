@@ -51,13 +51,16 @@ public class DatabaseUserService implements UserService{
     }
 
     @Override
-    public List<JojoPermission> findPermissionsByRoleId(Long roleId) {
-        List<JojoPermissionRole> byRoleId = jojoPermissionRoleRepository.findByRoleId(roleId);
+    public List<JojoPermission> findPermissionsByRoleId( List<JojoRoleUser> jojoRoleUsers) {
         List<JojoPermission> jojoPermissionsList=new ArrayList<>();
-        for (JojoPermissionRole item:byRoleId ) {
-            JojoPermission one = jojoPermissionRepository.getOne(item.getRoleId());
-            jojoPermissionsList.add(one);
+        for (JojoRoleUser jojoRoleUserItem:jojoRoleUsers) {
+            List<JojoPermissionRole> byRoleId = jojoPermissionRoleRepository.findByRoleId(jojoRoleUserItem.getSysRoleId());
+            for (JojoPermissionRole item:byRoleId ) {
+                JojoPermission one = jojoPermissionRepository.getOne(item.getRoleId());
+                jojoPermissionsList.add(one);
+            }
         }
+
         return jojoPermissionsList;
     }
 
