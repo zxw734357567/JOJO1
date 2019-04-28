@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.Dto.RolesAndPermissionInUser;
+import com.example.demo.entity.JojoPermission;
 import com.example.demo.entity.JojoRole;
 import com.example.demo.entity.JojoRoleUser;
 import com.example.demo.entity.JojoUser;
@@ -14,4 +15,8 @@ import java.util.Optional;
 public interface UserService {
      Optional<JojoUser> findByUsername(String username);
     List<RolesAndPermissionInUser> findRolesAndPermissionByUsernameByID(Long id);
+    List<JojoRoleUser> findBySysUserId(Long sysUserId);
+    List<JojoPermission> findPermissionsByRoleId(Long roleId);
+
+  /*  List<RolesAndPermissionInUser> findUserOfRoleAndPermissionByUserName(String username);*/
 }
