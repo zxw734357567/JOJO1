@@ -44,7 +44,7 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
-        if (!HttpMethod.POST.name().equals(httpServletRequest) || !WebUtil.isAjax(httpServletRequest)) {
+        if (!HttpMethod.POST.name().equals(httpServletRequest.getMethod()) || !WebUtil.isAjax(httpServletRequest)) {
             if (logger.isDebugEnabled()) {
                 logger.debug("Authentication method not supported , request method:" + httpServletRequest.getMethod());
             }
@@ -52,7 +52,7 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
         }
         //
         LoginRequest loginRequest = objectMapper.readValue(httpServletRequest.getReader(), LoginRequest.class);
-        if (StringUtils.isNotBlank(loginRequest.getUsername()) || StringUtils.isNotBlank(loginRequest.getPassword())) {
+        if (StringUtils.isBlank(loginRequest.getUsername()) || StringUtils.isBlank(loginRequest.getPassword())) {
             throw new AuthenticationServiceException("Username or Password not provided");
         }
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());

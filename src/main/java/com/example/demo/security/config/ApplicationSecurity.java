@@ -124,7 +124,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
+               // .and().formLogin().loginPage("/login").permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers(permitAllEndpointList.toArray(new String[permitAllEndpointList.size()]))
