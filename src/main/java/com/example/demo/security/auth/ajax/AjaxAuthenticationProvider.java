@@ -51,7 +51,7 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
         }
         List<JojoRoleUser> bySysUserId = userService.findBySysUserId(user.getId());
 
-        if (bySysUserId == null) {throw new InsufficientAuthenticationException("User has no roles assigned");}
+        if (bySysUserId == null || bySysUserId.isEmpty()) {throw new InsufficientAuthenticationException("User has no roles assigned");}
 
         List<JojoPermission> permissionsByRoleId = userService.findPermissionsByRoleId(bySysUserId);
         List<GrantedAuthority> authorities = permissionsByRoleId.stream()
