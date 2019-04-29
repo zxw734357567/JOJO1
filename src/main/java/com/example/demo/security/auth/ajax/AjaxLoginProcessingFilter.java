@@ -34,7 +34,7 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
     private final AuthenticationFailureHandler authenticationFailureHandler;
     private  final ObjectMapper objectMapper;
 
-    protected AjaxLoginProcessingFilter(String defaultProcessUrl, AuthenticationSuccessHandler successHandler,
+    public  AjaxLoginProcessingFilter(String defaultProcessUrl, AuthenticationSuccessHandler successHandler,
                                         AuthenticationFailureHandler failureHandler, ObjectMapper mapper) {
         super(defaultProcessUrl);
         this.authenticationSuccessHandler = successHandler;

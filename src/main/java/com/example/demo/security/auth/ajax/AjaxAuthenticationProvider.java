@@ -16,6 +16,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Administrator on 2019-4-21.
  */
+@Component
 public class AjaxAuthenticationProvider implements AuthenticationProvider {
 
     private final BCryptPasswordEncoder encoder;

@@ -2,11 +2,15 @@ package com.example.demo.security.auth.ajax;
 
 import com.example.demo.security.model.UserContext;
 import com.example.demo.security.model.token.JwtToken;
+import com.example.demo.security.model.token.JwtTokenFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +26,18 @@ import java.util.Map;
  * @Date Created in 2019/4/28  21:20.
  * @Modified by:
  */
-public class AjaxAwareAuthenticationSuccessHandler extends AuthenticationSuccessHandler {
+@Component
+public class AjaxAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    private final ObjectMapper mapper;
+    private final JwtTokenFactory tokenFactory;
+
+    @Autowired
+    public AjaxAwareAuthenticationSuccessHandler(final ObjectMapper mapper, final JwtTokenFactory tokenFactory) {
+        this.mapper = mapper;
+        this.tokenFactory = tokenFactory;
+    }
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         UserContext userContext = (UserContext) authentication.getPrincipal();
 
         JwtToken accessToken = tokenFactory.createAccessJwtToken(userContext);
