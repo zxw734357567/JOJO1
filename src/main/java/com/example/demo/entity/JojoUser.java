@@ -1,5 +1,9 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
@@ -8,13 +12,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "jojo_user")
 public class JojoUser {
+    @JsonIgnore
     private long id;
     private String username;
     private String password;
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator="assigned")
+    @GenericGenerator(name="assigned", strategy="assigned")
+
     public long getId() {
         return id;
     }
@@ -55,6 +62,15 @@ public class JojoUser {
         if (password != null ? !password.equals(jojoUser.password) : jojoUser.password != null) return false;
 
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "JojoUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     @Override

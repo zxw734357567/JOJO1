@@ -3,6 +3,8 @@ package com.example.demo.dao;
 import com.example.demo.entity.JojoPermission;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 /**
  * @Author zhangxw
  * @Description:
@@ -10,4 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Modified by:
  */
 public interface JojoPermissionRepository extends JpaRepository<JojoPermission,Long> {
+
 }

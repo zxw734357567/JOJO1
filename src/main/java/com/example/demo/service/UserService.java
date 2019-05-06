@@ -1,22 +1,14 @@
 package com.example.demo.service;
 
-import com.example.demo.Dto.RolesAndPermissionInUser;
-import com.example.demo.entity.JojoPermission;
-import com.example.demo.entity.JojoRole;
-import com.example.demo.entity.JojoRoleUser;
 import com.example.demo.entity.JojoUser;
 
-import java.util.List;
-import java.util.Optional;
-
 /**
- * Created by Administrator on 2019-4-21.
+ * @Author zhangxw
+ * @Description:
+ * @Date Created in 2019/5/6  9:55.
+ * @Modified by:
  */
 public interface UserService {
-     Optional<JojoUser> findByUsername(String username);
-    List<RolesAndPermissionInUser> findRolesAndPermissionByUsernameByID(Long id);
-    List<JojoRoleUser> findBySysUserId(Long sysUserId);
-    List<JojoPermission> findPermissionsByRoleId( List<JojoRoleUser> jojoRoleUsers);
-
-  /*  List<RolesAndPermissionInUser> findUserOfRoleAndPermissionByUserName(String username);*/
+    JojoUser  saveOne(JojoUser jojoUser);
+    JojoUser findByUsername(String username);
 }
