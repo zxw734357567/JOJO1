@@ -16,7 +16,7 @@ public class RedisKeyUtil {
      * @param majorKey 主键名
      * @param majorKeyValue 主键值
      * @param column 列名
-     * @return
+     * @return 列名值
      */
     public static String getKeyWithColumn(String tableName,String majorKey,String majorKeyValue,String column){
         StringBuffer buffer = new StringBuffer();
@@ -32,9 +32,9 @@ public class RedisKeyUtil {
      * 表名:主键名:主键值
      *
      * @param tableName 表名
-     * @param majorKey 主键名
-     * @param majorKeyValue 主键值
-     * @return
+     * @param majorKey 主键名/主键值
+     * @param majorKeyValue 主键值/列名
+     * @return 实体
      */
     public static String getKey(String tableName,String majorKey,String majorKeyValue){
         StringBuffer buffer = new StringBuffer();

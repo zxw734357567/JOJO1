@@ -9,6 +9,6 @@ import com.example.demo.entity.JojoUser;
  * @Modified by:
  */
 public interface UserService {
-    JojoUser  saveOne(JojoUser jojoUser);
+    Boolean  saveOne(JojoUser jojoUser);
     JojoUser findByUsername(String username);
 }

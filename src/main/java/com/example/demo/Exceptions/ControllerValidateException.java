@@ -7,13 +7,9 @@ package com.example.demo.Exceptions;
  * @Modified by:
  */
 public class ControllerValidateException extends RuntimeException {
-   private String errorMessage;
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public ControllerValidateException(String message){
+        super(message);
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
 }

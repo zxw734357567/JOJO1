@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,6 +15,7 @@ import javax.persistence.*;
 public class JojoUser {
     @JsonIgnore
     private long id;
+
     private String username;
     private String password;
 
