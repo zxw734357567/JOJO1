@@ -98,6 +98,16 @@
             <artifactId>jbcrypt</artifactId>
             <version>0.3m</version>
         </dependency>
+        <!--数据库连接池 监控性能-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.20</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
