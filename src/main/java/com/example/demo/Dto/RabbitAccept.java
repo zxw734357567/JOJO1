@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @Modified by:
  */
 @Component
-@RabbitListener(queues = "*.orange")
+@RabbitListener(queues = "hello")
 public class RabbitAccept {
     @RabbitHandler
     public void process(String hello) {

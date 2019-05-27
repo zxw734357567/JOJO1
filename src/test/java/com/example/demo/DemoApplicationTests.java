@@ -22,13 +22,7 @@ public class DemoApplicationTests {
 	@Transactional
 	@Test
 	public void contextLoads() {
-		User user=new User();
-		user.setUserName("张三");
-		user.setPassword("123");
-		user.setAddress("湖南怀化");
-		List<RolesAndPermissionInUser> rolesAndPermissionByUsernameByID = jojoUserRepository.findRolesAndPermissionByUsernameByID(1L);
-		System.out.println(rolesAndPermissionByUsernameByID.toString());
-		/*jojoUserRepository.save(user);*/
+
 	}
 
 }

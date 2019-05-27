@@ -6,7 +6,7 @@ $(document).ready(function() {
     debugger
     $.ajax({
       type: "POST",
-      url: window.location.origin + "/user/login",
+      url: window.location.origin + "/api/jwt/login",
      //contentType: 'application/json;charset=utf-8',
       dataType: "JSON",
       data: {

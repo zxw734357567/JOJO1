@@ -32,7 +32,7 @@
             targetPackage     指定生成的model生成所在的包名
             targetProject     指定在该项目下所在的路径
         -->
-        <javaModelGenerator targetPackage="cn.zxw.entity"
+        <javaModelGenerator targetPackage="com.example.demo.entity.mybatisEntity"
                             targetProject="src/main/java">
 
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
@@ -46,7 +46,7 @@
         </javaModelGenerator>
 
         <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
-        <sqlMapGenerator targetPackage="mappers"
+        <sqlMapGenerator targetPackage="mybatis.mappers"
                          targetProject="src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
@@ -56,14 +56,14 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator targetPackage="cn.zxw.dao"
+
+        <javaClientGenerator targetPackage="com.example.demo.dao.mybatisDao"
                              targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-
-        <table tableName="student" domainObjectName="Student"
+        <table tableName="JOJO_AUTHOR" domainObjectName="JojoAuthor"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true"><!--在这里，设置从数据库到实体类的对应关系名。且还可以设置是否生成增删查改方法-->

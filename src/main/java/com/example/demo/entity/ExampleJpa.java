@@ -1,7 +1,5 @@
 package com.example.demo.entity;
 
-import org.hibernate.annotations.Entity;
-
 /**学习JPA框架
  *  优点:
  *  1.标准化 JPA 是 JCP 组织发布的 Java EE 标准之一，因此任何声称符合 JPA 标准的框架都遵循同样的架构，提供相同的访问API，
