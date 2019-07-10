@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 @Configuration
 public class RabbitMqConfig {
-    @Bean
+ /*   @Bean
     public ConnectionFactory connectionFactory(){
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setAddresses("127.0.0.1:5672");
@@ -41,48 +41,48 @@ public class RabbitMqConfig {
 
 
     
-    /**
+    *//**
     * @Author: Zhangxw
     * @Description:一个队列
     * @Date 15:50  2019/5/23
     * @param 
     * @return 
-    */
+    *//*
     @Bean
     public Queue queueHello(){
         return new Queue("hello");
     }
 
-    /**
+    *//**
     * @Author: Zhangxw
     * @Description: 一个路由器
     * @Date 15:49  2019/5/23
     * @param 
     * @return 
-    */
+    *//*
     @Bean
     public TopicExchange exchange002() {
         return new TopicExchange("topic002", true, false);
     }
-    /**
+    *//**
     * @Author: Zhangxw
     * @Description:
     * @Date 15:49  2019/5/23
     * @param 
     * @return 
-    */
+    *//*
     @Bean
     public Binding binding002() {
         return BindingBuilder.bind(queueHello()).to(exchange002()).with("rabbit.*");
     }
 
-    /**
+    *//**
     * @Author: Zhangxw
     * @Description:RabbitMq模板
     * @Date 16:01  2019/5/23
     * @param 
     * @return 
-    */
+    *//*
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
@@ -90,13 +90,13 @@ public class RabbitMqConfig {
     }
 
 
-    /**
+    *//**
     * @Author: Zhangxw
     * @Description:消费者监听
     * @Date 15:55  2019/5/23
     * @param 
     * @return 
-    */
+    *//*
     @Bean
     public SimpleMessageListenerContainer messageContainer(ConnectionFactory connectionFactory) {
 
@@ -127,7 +127,7 @@ public class RabbitMqConfig {
             }
         });
         return container;
-    }
+    }*/
 
 
 }
