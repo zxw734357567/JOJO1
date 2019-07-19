@@ -1,15 +1,6 @@
 package com.example.demo.controller.User;
 
-import com.example.demo.entity.HttpCode;
-import com.example.demo.entity.JojoUser;
-import com.example.demo.entity.ResultEntity;
-import com.example.demo.service.Implement.UserServiceImplement;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -23,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "用户", description = "对用户的相关操作")
 public class UserCrudController {
 
-    @Autowired
+   /* @Autowired
     UserServiceImplement userServiceImplement;
 
 
@@ -56,6 +47,6 @@ public class UserCrudController {
         JojoUser byUsername = userServiceImplement.findByUsername(username);
 
         return byUsername == null ? new ResultEntity<JojoUser>(HttpCode.BAD_REQUEST, byUsername + "用户名不存在!") : new ResultEntity<JojoUser>(HttpCode.OK, byUsername + "用户名存在!");
-    }
+    }*/
 
 }
