@@ -1,7 +1,15 @@
 package com.example.demo.controller.User;
 
+import com.example.demo.configurations.securityConfig.entities.JojoUser;
+import com.example.demo.configurations.securityConfig.service.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author zhangxw
@@ -13,6 +21,23 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 @Api(tags = "用户", description = "对用户的相关操作")
 public class UserCrudController {
+
+    @Resource
+    private UserService userService;
+
+    @RequestMapping(value = "info", method = RequestMethod.POST)
+    public List<JojoUser> getUserByDynamicCondition(@RequestParam(value = "pid", required = true) String pid) {
+        List<JojoUser> jojoUserList = null;
+        return jojoUserList;
+    }
+
+    @PostMapping(value = "getByUserNameOrPath")
+    @ApiOperation(value="通过用户名或者path去查询",notes = "主要是为了查询动态sql的使用")
+    public List<JojoUser> getByUserNameOrPath(@RequestParam(value = "userName", required = false) String userName,
+                                              @RequestParam(value = "path", required = false) String path) {
+        List<JojoUser> byNameOrPath = userService.findByNameOrPath(userName, path);
+        return byNameOrPath;
+    }
 
    /* @Autowired
     UserServiceImplement userServiceImplement;

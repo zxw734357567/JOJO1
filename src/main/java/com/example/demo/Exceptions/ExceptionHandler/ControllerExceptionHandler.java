@@ -26,9 +26,18 @@ public class ControllerExceptionHandler {
     }
 
 
+
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     @ExceptionHandler(RuntimeException.class)
+    /**
+    *@Description  抓取任何异常然后将异常转化为json数据
+    *@Param [exception]
+    *@Return com.example.demo.entity.ResultEntity
+    *@Author zhangxw
+    *@Date 2019/8/13
+    *@Time 10:06
+    */
     public ResultEntity handlerControllerValidateException(RuntimeException exception) {
         //可以在这个上面,将异常给统计出来,存入到表中,可以获取更多的信息,从Exception
         exception.printStackTrace();

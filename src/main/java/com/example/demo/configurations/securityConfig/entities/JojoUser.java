@@ -1,5 +1,7 @@
 package com.example.demo.configurations.securityConfig.entities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,20 +11,45 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "jojo_user")
+@ApiModel(description = "用户节点")
 public class JojoUser {
-    private long id;
+    private Long id;
+    @ApiModelProperty(value = "用户名", name = "username", required = false)
     private String username;
+    @ApiModelProperty(value = "密码", name = "password", required = false)
     private String password;
+    @ApiModelProperty(value = "父节点", name = "pid", required = false,example = "1")
+    private Long pid;
+    @ApiModelProperty(value = "路径", name = "path", required = false)
+    private String path;
+
+    @Column(name = "path")
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    @Column(name = "pid")
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator="assigned")
-    @GenericGenerator(name="assigned", strategy="assigned")
-    public long getId() {
+    @GeneratedValue(
+            strategy= GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,4 +103,7 @@ public class JojoUser {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
+
+
+
 }
