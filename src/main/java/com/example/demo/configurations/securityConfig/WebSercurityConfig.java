@@ -35,6 +35,7 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
     public static final String AUTHENTICATION_HEADER_NAME = "Authorization";
     public static final String AUTHENTICATION_URL = "/api/jwt/login";
     public static final String REFRESH_TOKEN_URL = "/api/jwt/token";
+    //是不是所有的api都是这个开头
     public static final String API_ROOT_URL = "/api/**";
 
     @Autowired
@@ -98,23 +99,21 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // We don't need CSRF for JWT based authentication
                 .exceptionHandling()
                 .authenticationEntryPoint(this.authenticationEntryPoint)
-
                 .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //不适用session
-                 .and().formLogin().loginPage("/user/login").permitAll()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //不适用session
                 .and()
-                .authorizeRequests()
-                .antMatchers(permitAllEndpointList.toArray(new String[permitAllEndpointList.size()]))
-                .permitAll()
+                        .authorizeRequests()
+                        .antMatchers(permitAllEndpointList.toArray(new String[permitAllEndpointList.size()]))
+                        .permitAll()
                 .and()
-                .authorizeRequests()
-                .antMatchers(API_ROOT_URL).authenticated() // Protected API End-points
+                    .authorizeRequests()
+                    .antMatchers(API_ROOT_URL).authenticated() // Protected API End-points
                 .and()
-                .addFilterBefore(new CustomCorsFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(buildAjaxLoginProcessingFilter(AUTHENTICATION_URL), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(buildJwtTokenAuthenticationProcessingFilter(permitAllEndpointList,
-                        API_ROOT_URL), UsernamePasswordAuthenticationFilter.class);
+                    .addFilterBefore(new CustomCorsFilter(), UsernamePasswordAuthenticationFilter.class)
+                    .addFilterBefore(buildAjaxLoginProcessingFilter(AUTHENTICATION_URL), UsernamePasswordAuthenticationFilter.class)
+                    .addFilterBefore(buildJwtTokenAuthenticationProcessingFilter(permitAllEndpointList,
+                            API_ROOT_URL), UsernamePasswordAuthenticationFilter.class);
     }
 
 }

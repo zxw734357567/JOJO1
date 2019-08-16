@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Modified by:
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @Api(tags = "登录", description = "使用JWT完成登录")
 public class LoginController {
     //Note:在SpringSecurity模块的时候,会跳转到该页面,因为任何请求都会被拦截,有的文件必须被放开

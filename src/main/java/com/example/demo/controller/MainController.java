@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by Administrator on 2019-3-28.
  */
-@RequestMapping("/test")
+@RequestMapping("/api/test")
 @RestController
 @Api(tags="测试",description = "描述我的测试")
 @ApiModel("用户实体")

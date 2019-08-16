@@ -18,7 +18,7 @@ import java.util.List;
  * @Modified by:
  */
 @RestController()
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @Api(tags = "用户", description = "对用户的相关操作")
 public class UserCrudController {
 

@@ -1,5 +1,6 @@
 package com.example.demo.configurations.securityConfig.common;
 
+import com.example.demo.configurations.securityConfig.model.token.JwtToken;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 

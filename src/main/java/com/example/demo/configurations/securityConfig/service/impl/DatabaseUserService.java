@@ -57,7 +57,7 @@ public class DatabaseUserService implements UserService {
         for (JojoRoleUser jojoRoleUserItem : jojoRoleUsers) {
             List<JojoPermissionRole> byRoleId = jojoPermissionRoleRepository.findByRoleId(jojoRoleUserItem.getSysRoleId());
             for (JojoPermissionRole item : byRoleId) {
-                JojoPermission one = jojoPermissionRepository.getOne(item.getRoleId());
+                JojoPermission one = jojoPermissionRepository.findById(item.getPermissionId()).get();
                 jojoPermissionsList.add(one);
             }
         }

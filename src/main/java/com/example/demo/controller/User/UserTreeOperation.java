@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestMapping("userTree")
+@RequestMapping("/api/userTree")
 @RestController
 @Api(value = "用户树结构", tags = "用户")
 public class UserTreeOperation {
@@ -42,7 +42,7 @@ public class UserTreeOperation {
             trees.add(userTreeNode);
         }
         //所有的节点,我设置所有的节点为初始节点
-        List<UserTree> tree = TreeStructureUtil.getTree(trees, 0l);
+        List<UserTree> tree = TreeStructureUtil.getTree(trees, null);
         ResultEntity<List<UserTree>> reponse = new ResultEntity<List<UserTree>>(HttpCode.OK, "查询成功!", tree);
         return reponse;
     }
